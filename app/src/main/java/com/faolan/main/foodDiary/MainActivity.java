@@ -7,7 +7,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.calendar.*;
-import com.google.api.services.calendar.model.*;
 
 import com.google.gson.Gson;
 import com.squareup.otto.Subscribe;
@@ -39,7 +38,6 @@ public class MainActivity extends Activity {
     GoogleAccountCredential mCredential;
     ProgressDialog mProgress;
     SharedPreferences prefs;
-    Events storedEvents;
     Gson gson;
 
     static final int REQUEST_ACCOUNT_PICKER = 1000;
@@ -124,7 +122,9 @@ public class MainActivity extends Activity {
     @Subscribe
     public void requestComplete(RequestSuccess model){
         System.out.println("request complete...");
-        Toast.makeText(this, model.message ,Toast.LENGTH_LONG).show();
+        System.out.println(model.message);
+        mProgress.cancel();
+        Toast.makeText(this, "Request Successful" ,Toast.LENGTH_LONG).show();
     }
 
     private void executeTask(AsyncTask<Void, Void, List<String>> task){

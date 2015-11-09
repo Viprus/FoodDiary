@@ -1,7 +1,6 @@
 package com.faolan.main.foodDiary.models;
 
 import com.google.api.services.calendar.model.Event;
-
 import java.util.List;
 
 public class RequestSuccess {
